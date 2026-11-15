@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060a17" />
+      <stop offset="100%" stop-color="#101836" />
+    </linearGradient>
+    <linearGradient id="accent2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#a78bfa" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg2)" />
+  <g stroke="#1c2a4d" stroke-width="1" opacity="0.45">
+    <path d="M0 100 H800 M0 200 H800 M0 300 H800 M0 400 H800" />
+    <path d="M100 0 V500 M200 0 V500 M300 0 V500 M400 0 V500 M500 0 V500 M600 0 V500 M700 0 V500" />
+  </g>
+
+  <!-- Header -->
+  <rect x="34" y="28" width="732" height="54" rx="14" fill="#0d1428" stroke="#1c2a4d" stroke-width="2" />
+  <text x="56" y="60" fill="#22d3ee" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">SVISIONTEK // RAPID MVP &amp; PROTOTYPE ARCHITECTURE</text>
+  <rect x="608" y="42" width="140" height="26" rx="13" fill="rgba(167,139,250,0.16)" stroke="#a78bfa" />
+  <text x="626" y="59" fill="#e6ecff" font-size="11" font-weight="700">IDEA → LIVE MVP</text>
+
+  <!-- Step 1: Wireframe -->
+  <rect x="34" y="106" width="214" height="240" rx="14" fill="#0d1428" stroke="#22d3ee" stroke-opacity="0.6" stroke-width="1.5" />
+  <text x="52" y="134" fill="#22d3ee" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">01 · PRODUCT SPEC &amp; UX</text>
+  <rect x="52" y="150" width="178" height="32" rx="6" fill="#080e1f" stroke="#1c2a4d" />
+  <rect x="64" y="162" width="88" height="8" rx="4" fill="#22d3ee" opacity="0.7" />
+  <rect x="52" y="194" width="84" height="72" rx="8" fill="#080e1f" stroke="#1c2a4d" stroke-dasharray="4 3" />
+  <rect x="146" y="194" width="84" height="72" rx="8" fill="#080e1f" stroke="#1c2a4d" stroke-dasharray="4 3" />
+  <rect x="52" y="280" width="178" height="46" rx="8" fill="#080e1f" stroke="#1c2a4d" />
+  <text x="66" y="308" fill="#8a98c0" font-size="11">Interactive Flows &amp; UI</text>
+
+  <!-- Arrow 1 -->
+  <path d="M254 226 H286" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" />
+  <polygon points="284,220 295,226 284,232" fill="#22d3ee" />
+
+  <!-- Step 2: API + SQL + Automation Hub -->
+  <rect x="296" y="106" width="208" height="240" rx="14" fill="#0d1428" stroke="#a78bfa" stroke-opacity="0.7" stroke-width="1.5" />
+  <text x="314" y="134" fill="#a78bfa" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">02 · BACKEND &amp; API HUB</text>
+
+  <rect x="314" y="152" width="172" height="46" rx="8" fill="#080e1f" stroke="#22d3ee" />
+  <text x="328" y="173" fill="#e6ecff" font-size="12" font-weight="700">REST API Endpoints</text>
+  <text x="328" y="189" fill="#34d399" font-size="10" font-family="JetBrains Mono, monospace">200 OK · JSON Sync</text>
+
+  <rect x="314" y="210" width="172" height="46" rx="8" fill="#080e1f" stroke="#a78bfa" />
+  <text x="328" y="231" fill="#e6ecff" font-size="12" font-weight="700">MySQL / SQL Schema</text>
+  <text x="328" y="247" fill="#8a98c0" font-size="10" font-family="JetBrains Mono, monospace">Relational Queries &amp; ETL</text>
+
+  <rect x="314" y="268" width="172" height="58" rx="8" fill="#080e1f" stroke="#34d399" />
+  <text x="328" y="290" fill="#e6ecff" font-size="12" font-weight="700">AI &amp; Automation Tools</text>
+  <text x="328" y="308" fill="#22d3ee" font-size="10" font-family="JetBrains Mono, monospace">Webhooks + Scheduled Jobs</text>
+
+  <!-- Arrow 2 -->
+  <path d="M510 226 H542" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round" />
+  <polygon points="540,220 551,226 540,232" fill="#a78bfa" />
+
+  <!-- Step 3: Live Telemetry -->
+  <rect x="552" y="106" width="214" height="240" rx="14" fill="#0d1428" stroke="#34d399" stroke-opacity="0.7" stroke-width="1.5" />
+  <text x="570" y="134" fill="#34d399" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">03 · TELEMETRY &amp; BI</text>
+
+  <rect x="570" y="152" width="178" height="84" rx="8" fill="#080e1f" stroke="#1c2a4d" />
+  <text x="584" y="172" fill="#8a98c0" font-size="10">USER BEHAVIOR BARS</text>
+  <rect x="586" y="206" width="16" height="22" rx="3" fill="#22d3ee" />
+  <rect x="610" y="194" width="16" height="34" rx="3" fill="#22d3ee" />
+  <rect x="634" y="184" width="16" height="44" rx="3" fill="#a78bfa" />
+  <rect x="658" y="198" width="16" height="30" rx="3" fill="#22d3ee" />
+  <rect x="682" y="178" width="16" height="50" rx="3" fill="#34d399" />
+  <rect x="706" y="188" width="16" height="40" rx="3" fill="#34d399" />
+
+  <rect x="570" y="250" width="178" height="76" rx="8" fill="#080e1f" stroke="#1c2a4d" />
+  <text x="584" y="272" fill="#e6ecff" font-size="12" font-weight="700">Product Insights</text>
+  <text x="584" y="294" fill="#34d399" font-size="11">✔ Feature Adoption Tracked</text>
+  <text x="584" y="312" fill="#22d3ee" font-size="11">✔ Power BI + Excel Reports</text>
+
+  <!-- Bottom Summary Banner -->
+  <rect x="34" y="366" width="732" height="106" rx="14" fill="#0d1428" stroke="#1c2a4d" stroke-width="2" />
+  <rect x="54" y="388" width="214" height="62" rx="10" fill="#080e1f" stroke="#1c2a4d" />
+  <text x="72" y="414" fill="#8a98c0" font-size="10.5" font-weight="600">DELIVERY SPEED</text>
+  <text x="72" y="438" fill="#22d3ee" font-size="18" font-weight="700">Days, Not Weeks</text>
+
+  <rect x="293" y="388" width="214" height="62" rx="10" fill="#080e1f" stroke="#1c2a4d" />
+  <text x="311" y="414" fill="#8a98c0" font-size="10.5" font-weight="600">ARCHITECTURE</text>
+  <text x="311" y="438" fill="#a78bfa" font-size="18" font-weight="700">APIs + SQL + AI</text>
+
+  <rect x="532" y="388" width="214" height="62" rx="10" fill="#080e1f" stroke="#1c2a4d" />
+  <text x="550" y="414" fill="#8a98c0" font-size="10.5" font-weight="600">DECISION LOOP</text>
+  <text x="550" y="438" fill="#34d399" font-size="18" font-weight="700">Data-Validated UX</text>
+</svg>
