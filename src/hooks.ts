@@ -10,20 +10,24 @@ export function useSpeech(text: string) {
     if (!supported) return
     const pick = () => {
       const voices = window.speechSynthesis.getVoices()
+      const isFemale = (v: SpeechSynthesisVoice) =>
+        /female|woman|girl|neerja|heera|zira|hazel|susan|catherine|jenny|aria|sonia|veena|aditi|swara|kalpana/i.test(v.name)
+      const isMale = (v: SpeechSynthesisVoice) =>
+        /male|man|boy|prabhat|ravi|madhav|hemant|david|mark|guy|george|james|andrew|brian|richard|ryan|eric|steffan/i.test(v.name)
+
       voiceRef.current =
-        // 1. Natural / Online Indian English voices (Edge / Chrome)
-        voices.find((v) => /en[-_]IN/i.test(v.lang) && /natural|online/i.test(v.name) && /male|prabhat|ravi/i.test(v.name)) ||
-        voices.find((v) => /en[-_]IN/i.test(v.lang) && /natural|online/i.test(v.name)) ||
-        // 2. Male Indian English voices (Prabhat, Ravi, Madhav)
-        voices.find((v) => /en[-_]IN/i.test(v.lang) && /prabhat|ravi|madhav|male/i.test(v.name)) ||
-        // 3. Any Indian English voice (Neerja, Heera, Google en-IN)
-        voices.find((v) => /en[-_]IN/i.test(v.lang)) ||
-        // 4. Any Indian locale voice (Hindi / Indian English)
-        voices.find((v) => /[-_]IN/i.test(v.lang)) ||
-        // 5. English natural voices
-        voices.find((v) => /^en/i.test(v.lang) && /natural/i.test(v.name)) ||
-        // 6. Fallback English
-        voices.find((v) => /^en/i.test(v.lang)) ||
+        // 1. Male Indian English voices (Microsoft Prabhat, Ravi, Madhav, etc.)
+        voices.find((v) => /en[-_]IN/i.test(v.lang) && isMale(v)) ||
+        // 2. Any Indian English voice that is not explicitly female
+        voices.find((v) => /en[-_]IN/i.test(v.lang) && !isFemale(v)) ||
+        // 3. Indian locale male voice (e.g. Hindi/Indian male)
+        voices.find((v) => /[-_]IN/i.test(v.lang) && isMale(v)) ||
+        // 4. Any English natural/online male voice
+        voices.find((v) => /^en/i.test(v.lang) && /natural|online/i.test(v.name) && isMale(v)) ||
+        // 5. Any English male voice
+        voices.find((v) => /^en/i.test(v.lang) && isMale(v)) ||
+        // 6. Any English voice that is not female
+        voices.find((v) => /^en/i.test(v.lang) && !isFemale(v)) ||
         null
     }
     pick()
@@ -55,8 +59,8 @@ export function useSpeech(text: string) {
     } else {
       u.lang = 'en-IN'
     }
-    u.rate = 0.98
-    u.pitch = 1.0
+    u.rate = 0.95
+    u.pitch = 0.92
 
     u.onstart = () => {
       setSpeaking(true)
