@@ -4,15 +4,25 @@ export function useSpeech(text: string) {
   const [speaking, setSpeaking] = useState(false)
   const [supported] = useState(() => typeof window !== 'undefined' && 'speechSynthesis' in window)
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null)
+  const timerRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (!supported) return
     const pick = () => {
       const voices = window.speechSynthesis.getVoices()
       voiceRef.current =
-        voices.find((v) => /en-IN/i.test(v.lang) && /male|ravi|prabhat/i.test(v.name)) ||
-        voices.find((v) => /en-IN/i.test(v.lang)) ||
-        voices.find((v) => /^en/i.test(v.lang) && /male|david|mark|guy/i.test(v.name)) ||
+        // 1. Natural / Online Indian English voices (Edge / Chrome)
+        voices.find((v) => /en[-_]IN/i.test(v.lang) && /natural|online/i.test(v.name) && /male|prabhat|ravi/i.test(v.name)) ||
+        voices.find((v) => /en[-_]IN/i.test(v.lang) && /natural|online/i.test(v.name)) ||
+        // 2. Male Indian English voices (Prabhat, Ravi, Madhav)
+        voices.find((v) => /en[-_]IN/i.test(v.lang) && /prabhat|ravi|madhav|male/i.test(v.name)) ||
+        // 3. Any Indian English voice (Neerja, Heera, Google en-IN)
+        voices.find((v) => /en[-_]IN/i.test(v.lang)) ||
+        // 4. Any Indian locale voice (Hindi / Indian English)
+        voices.find((v) => /[-_]IN/i.test(v.lang)) ||
+        // 5. English natural voices
+        voices.find((v) => /^en/i.test(v.lang) && /natural/i.test(v.name)) ||
+        // 6. Fallback English
         voices.find((v) => /^en/i.test(v.lang)) ||
         null
     }
@@ -21,28 +31,59 @@ export function useSpeech(text: string) {
     return () => {
       window.speechSynthesis.removeEventListener('voiceschanged', pick)
       window.speechSynthesis.cancel()
+      if (timerRef.current) window.clearInterval(timerRef.current)
     }
   }, [supported])
 
   const stop = useCallback(() => {
     if (!supported) return
+    if (timerRef.current) {
+      window.clearInterval(timerRef.current)
+      timerRef.current = null
+    }
     window.speechSynthesis.cancel()
     setSpeaking(false)
   }, [supported])
 
   const speak = useCallback(() => {
     if (!supported) return
-    window.speechSynthesis.cancel()
+    stop()
     const u = new SpeechSynthesisUtterance(text)
-    if (voiceRef.current) u.voice = voiceRef.current
-    u.rate = 0.95
-    u.pitch = 0.9
-    u.onstart = () => setSpeaking(true)
-    const end = () => setSpeaking(false)
+    if (voiceRef.current) {
+      u.voice = voiceRef.current
+      u.lang = voiceRef.current.lang
+    } else {
+      u.lang = 'en-IN'
+    }
+    u.rate = 0.98
+    u.pitch = 1.0
+
+    u.onstart = () => {
+      setSpeaking(true)
+      // Keep-alive workaround for long utterances in Chromium browsers
+      if (timerRef.current) window.clearInterval(timerRef.current)
+      timerRef.current = window.setInterval(() => {
+        if (!window.speechSynthesis.speaking) {
+          if (timerRef.current) window.clearInterval(timerRef.current)
+        } else {
+          window.speechSynthesis.pause()
+          window.speechSynthesis.resume()
+        }
+      }, 7000)
+    }
+
+    const end = () => {
+      if (timerRef.current) {
+        window.clearInterval(timerRef.current)
+        timerRef.current = null
+      }
+      setSpeaking(false)
+    }
+
     u.onend = end
     u.onerror = end
     window.speechSynthesis.speak(u)
-  }, [supported, text])
+  }, [supported, text, stop])
 
   return { speak, stop, speaking, supported }
 }

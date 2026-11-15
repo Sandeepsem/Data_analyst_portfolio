@@ -12,7 +12,7 @@ export const profile = {
   ],
   tagline: 'I transform raw, messy datasets into executive Power BI dashboards, automated ETL pipelines, and actionable business insights.',
   welcome:
-    'Welcome to the portfolio of Sandeep Semwal. Choose your path: the Data Analyst portfolio, or the Vibe Coder portfolio with data analytics using AI tools and agentic AI.',
+    'Hello and welcome! I am Sandeep Semwal, a Data Analyst and Prototype Developer based in New Delhi, India. In my Data Analyst portfolio, you can explore interactive Power BI dashboards, MySQL and SQL data pipelines, and advanced Excel business intelligence reports designed to turn numbers into decisions. In my Vibe Coder portfolio, discover my work with Agentic AI, autonomous n8n workflows, and full-stack web and mobile applications deployed with Docker and cloud databases. Please select a portfolio below to explore my live projects, verified certificates, and credentials. Thank you for visiting!',
   location: 'New Delhi, India',
   email: 'semwalsandeep00@gmail.com',
   portfolioUrl: 'https://sandeepsem.github.io/portfolio-/',
