@@ -289,7 +289,7 @@ export const education = [
   {
     title: 'Post Graduate Diploma in Computer Application',
     place: 'Indira Gandhi National Open University (IGNOU), New Delhi',
-    year: 'Dec 2021',
+    year: 'Dec 2023',
   },
   {
     title: 'Bachelor of Science (B.Sc.)',
